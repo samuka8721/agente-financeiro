@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07101f"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="styles.css">
+<title>Gestor Financeiro IA</title>
+</head>
+<body>
+<header><div><small>CFO PESSOAL</small><h1>Gestor Financeiro IA</h1></div><span id="status">● online</span></header>
+<main>
+<section id="dash" class="view">
+<div class="cards">
+<div class="card hero"><small>DINHEIRO DISPONÍVEL</small><b id="available">R$ 0,00</b><span>Após compromissos e reserva</span></div>
+<div class="card"><small>SALDO</small><b id="balance">R$ 0,00</b></div>
+<div class="card"><small>FATURAS</small><b id="bills">R$ 0,00</b></div>
+<div class="card"><small>CONTAS</small><b id="payables">R$ 0,00</b></div>
+</div>
+<div class="panel"><h2>Diagnóstico</h2><p id="health"></p></div>
+<div class="panel"><h2>Cartões</h2><div id="cardList"></div></div>
+</section>
+
+<section id="accounts" class="view hidden"><div class="title"><h2>Contas</h2><button onclick="newAccount()">+ Conta</button></div><div id="accountsList"></div></section>
+<section id="cards" class="view hidden"><div class="title"><h2>Cartões</h2><button onclick="newCard()">+ Cartão</button></div><div id="cardsList"></div></section>
+<section id="moves" class="view hidden"><div class="title"><h2>Movimentos</h2><button onclick="newTx()">+ Lançamento</button></div><button class="secondary" onclick="newPurchase()">🛒 Compra parcelada</button><div id="movesList"></div></section>
+
+<section id="agent" class="view hidden"><div class="panel chat"><h2>🤖 Agente</h2><div id="chat"></div><div class="chips">
+<button onclick="ask('Quanto eu realmente posso gastar?')">Quanto posso gastar?</button>
+<button onclick="ask('Como estão minhas faturas?')">Minhas faturas</button>
+<button onclick="ask('Faça um resumo financeiro.')">Resumo</button>
+</div><form onsubmit="send(event)"><input id="question" placeholder="Pergunte sobre suas finanças"><button>Enviar</button></form></div></section>
+
+<section id="settings" class="view hidden"><div class="panel"><h2>Configurações</h2>
+<label>Reserva mínima<input id="reserve" type="number" step=".01"></label>
+<label>Renda mensal<input id="income" type="number" step=".01"></label>
+<button onclick="saveSettings()">Salvar</button>
+<p class="note">O aplicativo não solicita senhas bancárias, CVV ou códigos de autenticação.</p>
+</div></section>
+</main>
+<nav>
+<button onclick="go('dash')">⌂<small>Início</small></button><button onclick="go('accounts')">🏦<small>Contas</small></button>
+<button onclick="go('cards')">💳<small>Cartões</small></button><button onclick="go('moves')">💸<small>Movimentos</small></button>
+<button onclick="go('agent')">🤖<small>Agente</small></button><button onclick="go('settings')">⚙<small>Config.</small></button>
+</nav>
+<script src="app.js"></script>
+</body></html>
